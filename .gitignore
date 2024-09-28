@@ -1,32 +1,44 @@
-# Prerequisites
+# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
+# distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# CMake preset folders.
+build
+install
+
+# CLion project files and build folders.
+.idea
+cmake-build*
+
+# Visual Studio project files and build folders.
+.vs
+out*
+
+# Prerequisites.
 *.d
 
-# Compiled Object files
+# Compiled object files.
 *.slo
 *.lo
 *.o
 *.obj
 
-# Precompiled Headers
+# Precompiled headers.
 *.gch
 *.pch
 
-# Compiled Dynamic libraries
+# Compiled dynamic libraries.
 *.so
 *.dylib
 *.dll
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
+# Compiled static libraries.
 *.lai
 *.la
 *.a
 *.lib
 
-# Executables
+# Executables.
 *.exe
 *.out
 *.app
+
