@@ -1,0 +1,24 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+cmake_minimum_required(VERSION 3.22)
+
+project(imogrify
+	VERSION 0.0.0
+	DESCRIPTION "ToDo"
+	HOMEPAGE_URL "https://github.com/joseasoler/imogrify"
+	LANGUAGES C CXX
+	)
+
+# The project uses C++20 without any non-standard compiler extensions.
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+include(cmake/platform.cmake)
+
+include(cmake/dependencies/boost.cmake)
+
+add_subdirectory(imogrify)
