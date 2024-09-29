@@ -6,7 +6,8 @@
 #include <boost/nowide/filesystem.hpp>
 #include <boost/nowide/iostream.hpp>
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
 	// Use UTF-8 as the default encoding for Boost.Filesystem and the global C++ locale.
 	std::locale::global(boost::nowide::nowide_filesystem());
 
@@ -14,4 +15,3 @@ int main(int argc, char** argv) {
 
 	return EXIT_SUCCESS;
 }
-
