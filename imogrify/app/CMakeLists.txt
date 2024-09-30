@@ -4,6 +4,8 @@
 
 add_executable(imogrify main.cpp)
 
+target_compile_options(imogrify PRIVATE ${IMOGRIFY_CPP_WARNING_FLAGS})
+
 target_link_libraries(imogrify PRIVATE
 	Boost::filesystem
 	Boost::nowide

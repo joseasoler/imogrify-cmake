@@ -17,8 +17,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+include(cmake/options.cmake)
 include(cmake/platform.cmake)
+
+include(cmake/clang_tidy.cmake)
+include(cmake/compiler_warnings.cmake)
 
 include(cmake/dependencies/boost.cmake)
 
 add_subdirectory(imogrify)
+
