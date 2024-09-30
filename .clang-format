@@ -56,7 +56,7 @@ AllowShortBlocksOnASingleLine: Never
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortCompoundRequirementOnASingleLine: true
 AllowShortEnumsOnASingleLine: true
-AllowShortFunctionsOnASingleLine: All
+AllowShortFunctionsOnASingleLine: InlineOnly
 AllowShortIfStatementsOnASingleLine: WithoutElse
 AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: true
@@ -115,17 +115,17 @@ FixNamespaceComments: true
 # Removed ForEachMacros and IfMacros
 IncludeBlocks: Regroup
 IncludeCategories:
-# Since IncludeBlocks is set to Regroup, each Priority value defines a separate group.
-# SortPriority can be used to sort includes in the same group.
-# Third-party dependencies appear first.
-  - Regex: '^<boost.*'
+  # Since IncludeBlocks is set to Regroup, each Priority value defines a separate group.
+  # SortPriority can be used to sort includes in the same group.
+  # Third-party dependencies appear first.
+  - Regex: '^<imfy.*'
     Priority: 100
-  - Regex: '^<.*\.h>'
-    Priority: 200
-  - Regex: '^<.*'
+  - Regex: '^<boost.*'
     Priority: 300
-  - Regex: '.*'
+  - Regex: '^<.*'
     Priority: 400
+  - Regex: '.*'
+    Priority: 500
 IncludeIsMainRegex: '([-_](test|unittest))?$'
 IncludeIsMainSourceRegex: ''
 IndentAccessModifiers: false
