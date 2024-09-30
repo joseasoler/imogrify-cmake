@@ -3,12 +3,12 @@
  * distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-#include <imfy/locale.hpp>
+#pragma once
 
-#include <cstdlib>
-
-int main()
+namespace imfy::locale
 {
-	imfy::locale::initialize();
-	return EXIT_SUCCESS;
+
+/** Use UTF-8 as the default encoding for Boost.Filesystem and the global C++ locale. */
+void initialize();
+
 }
