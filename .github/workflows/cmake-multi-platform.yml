@@ -1,0 +1,51 @@
+# This starter workflow is for a CMake project running on multiple platforms. There is a different starter workflow if you just want a single platform.
+# See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-single-platform.yml
+name: CMake on multiple platforms
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+        build_type: [ debug, release ]
+        compiler: [ gcc, msvc ]
+        include:
+          - os: ubuntu-latest
+            cmake_os: linux
+          - os: windows-latest
+            cmake_os: windows
+        exclude:
+          - os: windows-latest
+            compiler: gcc
+          - os: ubuntu-latest
+            compiler: msvc
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgDirectory: '${{ runner.workspace }}/b/vcpkg'
+          vcpkgGitCommitId: 'f176b58f35a75f9f8f54099cd9df97d2e2793a2e' # 2024.09.23
+          runVcpkgInstall: true
+          vcpkgJsonGlob: '**/vcpkg.json'
+
+      - name: Setup ninja
+        uses: seanmiddleditch/gha-setup-ninja@v5
+
+      - name: Configure project
+        run: cmake --preset ci-cfg-${{ matrix.cmake_os }}-${{ matrix.build_type }}-${{ matrix.compiler }}
+
+      - name: Build project
+        run: cmake --build --preset ci-build-${{ matrix.cmake_os }}-${{ matrix.build_type }}-${{ matrix.compiler }}

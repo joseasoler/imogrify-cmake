@@ -1,0 +1,125 @@
+{
+	"version": 6,
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 25,
+		"patch": 0
+	},
+	"configurePresets": [
+		{
+			"name": "ci-cfg-base",
+			"binaryDir": "build/${presetName}",
+			"hidden": true,
+			"generator": "Ninja",
+			"cacheVariables": {
+				"CMAKE_COMPILE_WARNING_AS_ERROR": "ON",
+				"CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+			}
+		},
+		{
+			"name": "ci-cfg-debug",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			},
+			"hidden": true
+		},
+		{
+			"name": "ci-cfg-release",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			},
+			"hidden": true
+		},
+		{
+			"name": "ci-cfg-linux",
+			"cacheVariables": {
+				"VCPKG_TARGET_TRIPLET": "x64-linux",
+				"IMOGRIFY_CLANG_TIDY": "ON"
+			},
+			"condition": {
+				"type": "equals",
+				"lhs": "${hostSystemName}",
+				"rhs": "Linux"
+			},
+			"hidden": true
+		},
+		{
+			"name": "ci-cfg-windows",
+			"cacheVariables": {
+				"VCPKG_TARGET_TRIPLET": "x64-windows-static"
+			},
+			"condition": {
+				"type": "equals",
+				"lhs": "${hostSystemName}",
+				"rhs": "Windows"
+			},
+			"hidden": true
+		},
+		{
+			"name": "ci-cfg-linux-debug-gcc",
+			"inherits": [
+				"ci-cfg-base",
+				"ci-cfg-debug",
+				"ci-cfg-linux"
+			],
+			"displayName": "Linux Debug GCC configuration"
+		},
+		{
+			"name": "ci-cfg-linux-release-gcc",
+			"inherits": [
+				"ci-cfg-base",
+				"ci-cfg-release",
+				"ci-cfg-linux"
+			],
+			"displayName": "Linux Release GCC configuration"
+		},
+		{
+			"name": "ci-cfg-windows-debug-msvc",
+			"inherits": [
+				"ci-cfg-base",
+				"ci-cfg-debug",
+				"ci-cfg-windows"
+			],
+			"displayName": "Windows MSVC debug configuration",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug",
+				"CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreadedDebug"
+			}
+		},
+		{
+			"name": "ci-cfg-windows-release-msvc",
+			"inherits": [
+				"ci-cfg-base",
+				"ci-cfg-debug",
+				"ci-cfg-windows"
+			],
+			"displayName": "Windows MSVC release config",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release",
+				"CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreaded"
+			}
+		}
+	],
+	"buildPresets": [
+		{
+			"name": "ci-build-linux-debug-gcc",
+			"configurePreset": "ci-cfg-linux-debug-gcc",
+			"displayName": "Linux Debug GCC"
+		},
+		{
+			"name": "ci-build-linux-release-gcc",
+			"configurePreset": "ci-cfg-linux-release-gcc",
+			"displayName": "Linux Release GCC"
+		},
+		{
+			"name": "ci-build-windows-debug-msvc",
+			"configurePreset": "ci-cfg-windows-debug-msvc",
+			"displayName": "Linux Debug GCC"
+		},
+		{
+			"name": "ci-build-windows-release-msvc",
+			"configurePreset": "ci-cfg-windows-release-msvc",
+			"displayName": "Linux Release GCC"
+		}
+	]
+}

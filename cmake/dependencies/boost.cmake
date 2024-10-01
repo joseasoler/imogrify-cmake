@@ -4,9 +4,9 @@
 
 include_guard(GLOBAL)
 
-if(POLICY CMP0167)
+if (POLICY CMP0167)
 	cmake_policy(SET CMP0167 NEW)
-endif()
+endif ()
 
 find_package(Boost 1.73 REQUIRED COMPONENTS
 	# Support UTF-8 on Windows.
