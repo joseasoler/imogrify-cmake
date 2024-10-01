@@ -4,5 +4,13 @@
 	"dependencies": [
 		"boost-filesystem",
 		"boost-nowide"
-	]
+	],
+	"features": {
+		"tests": {
+			"description": "Build unit tests",
+			"dependencies": [
+				"catch2"
+			]
+		}
+	}
 }

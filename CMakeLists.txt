@@ -4,6 +4,8 @@
 
 cmake_minimum_required(VERSION 3.25)
 
+include(cmake/options.cmake)
+
 project(imogrify
 	VERSION 0.0.0
 	DESCRIPTION "ToDo"
@@ -17,12 +19,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-include(cmake/options.cmake)
 include(cmake/platform.cmake)
 
 include(cmake/clang_tidy.cmake)
 include(cmake/compiler_warnings.cmake)
 
 include(cmake/dependencies/boost.cmake)
+include(cmake/dependencies/catch2.cmake)
 
 add_subdirectory(imogrify)
+
+if (IMOGRIFY_BUILD_UNIT_TESTS)
+	add_subdirectory(tests)
+endif ()
