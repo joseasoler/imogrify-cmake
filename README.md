@@ -12,6 +12,13 @@ imogrify encourages community involvement and contributions. Check the [CONTRIBU
 
 imogrify is licensed under the Mozilla Public License, v. 2.0. See the [LICENSE](LICENSE) file for details. Check the [MPL 2.0 FAQ](https://www.mozilla.org/en-US/MPL/2.0/FAQ/) to learn more.
 
+## Building
+
+### Dependencies
+
+* [Boost.Filesystem](https://www.boost.org/doc/libs/master/libs/filesystem/doc/index.htm)
+* [Boost.NoWide](https://www.boost.org/doc/libs/master/libs/nowide/doc/html/index.html)
+
 ## Acknowledgements
 
 Check the [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) file for details.

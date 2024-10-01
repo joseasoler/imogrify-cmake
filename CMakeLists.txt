@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.25)
 
 project(imogrify
 	VERSION 0.0.0
@@ -26,4 +26,3 @@ include(cmake/compiler_warnings.cmake)
 include(cmake/dependencies/boost.cmake)
 
 add_subdirectory(imogrify)
-

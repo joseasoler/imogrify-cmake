@@ -117,7 +117,6 @@ IncludeBlocks: Regroup
 IncludeCategories:
   # Since IncludeBlocks is set to Regroup, each Priority value defines a separate group.
   # SortPriority can be used to sort includes in the same group.
-  # Third-party dependencies appear first.
   - Regex: '^<imfy.*'
     Priority: 100
   - Regex: '^<boost.*'
