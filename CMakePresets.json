@@ -1,0 +1,77 @@
+{
+	"version": 6,
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 25,
+		"patch": 0
+	},
+	"configurePresets": [
+		{
+			"name": "ci-cfg-base",
+			"binaryDir": "build/${presetName}",
+			"hidden": true,
+			"generator": "Ninja",
+			"cacheVariables": {
+				"CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+				"CMAKE_COMPILE_WARNING_AS_ERROR": "ON",
+				"IMOGRIFY_CLANG_TIDY": "ON"
+			}
+		},
+		{
+			"name": "ci-cfg-dbg",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			},
+			"hidden": true
+		},
+		{
+			"name": "ci-cfg-rel",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			},
+			"hidden": true
+		},
+		{
+			"name": "ci-cfg-linux",
+			"cacheVariables": {
+				"VCPKG_TARGET_TRIPLET": "x64-linux"
+			},
+			"condition": {
+				"type": "equals",
+				"lhs": "${hostSystemName}",
+				"rhs": "Linux"
+			},
+			"hidden": true
+		},
+		{
+			"name": "ci-cfg-linux-dbg-gcc",
+			"inherits": [
+				"ci-cfg-base",
+				"ci-cfg-dbg",
+				"ci-cfg-linux"
+			],
+			"displayName": "Linux GCC debug configuration"
+		},
+		{
+			"name": "ci-cfg-linux-rel-gcc",
+			"inherits": [
+				"ci-cfg-base",
+				"ci-cfg-rel",
+				"ci-cfg-linux"
+			],
+			"displayName": "Linux GCC release configuration"
+		}
+	],
+	"buildPresets": [
+		{
+			"name": "ci-linux-dbg-gcc",
+			"configurePreset": "ci-cfg-linux-dbg-gcc",
+			"displayName": "Linux GCC debug"
+		},
+		{
+			"name": "ci-linux-rel-gcc",
+			"configurePreset": "ci-cfg-linux-rel-gcc",
+			"displayName": "Release"
+		}
+	]
+}

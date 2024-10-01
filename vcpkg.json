@@ -1,0 +1,8 @@
+{
+	"name": "imogrify",
+	"version": "0.0.0",
+	"dependencies": [
+		"boost-filesystem",
+		"boost-nowide"
+	]
+}
