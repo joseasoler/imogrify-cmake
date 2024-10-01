@@ -14,6 +14,8 @@ imogrify is licensed under the Mozilla Public License, v. 2.0. See the [LICENSE]
 
 ## Building
 
+imogrify includes CI CMake presets which use [vcpkg](https://github.com/microsoft/vcpkg) to retrieve its dependencies and compile. To compile without vcpkg, all of its dependencies must be available as development libraries.
+
 ### Dependencies
 
 * [Boost.Filesystem](https://www.boost.org/doc/libs/master/libs/filesystem/doc/index.htm)
