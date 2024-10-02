@@ -37,8 +37,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup MSVC
         uses: ilammy/msvc-dev-cmd@v1
+
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
         with:
