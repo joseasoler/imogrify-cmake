@@ -6,6 +6,11 @@ cmake_minimum_required(VERSION 3.25)
 
 include(cmake/options.cmake)
 
+if (POLICY CMP0167)
+	# FindBoost module is removed policy.
+	cmake_policy(SET CMP0167 NEW)
+endif ()
+
 project(imogrify
 	VERSION 0.0.0
 	DESCRIPTION "ToDo"

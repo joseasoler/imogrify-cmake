@@ -1,8 +1,8 @@
 # Copyright (c) 2020 GitHub
 # Copyright (c) 2024 Imogrify contributors
 # File licensed under the MIT license (see build_checks_LICENSE for details).
-
 # Based on: https://github.com/actions/starter-workflows/blob/main/ci/cmake-multi-platform.yml
+
 name: Build checks
 
 on:
@@ -21,7 +21,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest ]
         build_type: [ debug, release ]
-        compiler: [ gcc, msvc ]
+        compiler: [ clang, gcc, msvc ]
         include:
           - os: ubuntu-latest
             cmake_os: linux
@@ -29,13 +29,16 @@ jobs:
             cmake_os: windows
         exclude:
           - os: windows-latest
+            compiler: clang
+          - os: windows-latest
             compiler: gcc
           - os: ubuntu-latest
             compiler: msvc
 
     steps:
       - uses: actions/checkout@v4
-      - uses: ilammy/msvc-dev-cmd@v1
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
         with:

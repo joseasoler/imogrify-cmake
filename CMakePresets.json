@@ -32,6 +32,14 @@
 			"hidden": true
 		},
 		{
+			"name": "ci-cfg-clang",
+			"cacheVariables": {
+				"CMAKE_C_COMPILER": "clang",
+				"CMAKE_CXX_COMPILER": "clang++"
+			},
+			"hidden": true
+		},
+		{
 			"name": "ci-cfg-linux",
 			"cacheVariables": {
 				"VCPKG_TARGET_TRIPLET": "x64-linux",
@@ -75,6 +83,26 @@
 			"displayName": "Linux Release GCC configuration"
 		},
 		{
+			"name": "ci-cfg-linux-debug-clang",
+			"inherits": [
+				"ci-cfg-base",
+				"ci-cfg-debug",
+				"ci-cfg-clang",
+				"ci-cfg-linux"
+			],
+			"displayName": "Linux Debug Clang configuration"
+		},
+		{
+			"name": "ci-cfg-linux-release-clang",
+			"inherits": [
+				"ci-cfg-base",
+				"ci-cfg-release",
+				"ci-cfg-clang",
+				"ci-cfg-linux"
+			],
+			"displayName": "Linux Release Clang configuration"
+		},
+		{
 			"name": "ci-cfg-windows-debug-msvc",
 			"inherits": [
 				"ci-cfg-base",
@@ -111,6 +139,16 @@
 			"name": "ci-build-linux-release-gcc",
 			"configurePreset": "ci-cfg-linux-release-gcc",
 			"displayName": "Linux Release GCC"
+		},
+		{
+			"name": "ci-build-linux-debug-clang",
+			"configurePreset": "ci-cfg-linux-debug-clang",
+			"displayName": "Linux Debug Clang"
+		},
+		{
+			"name": "ci-build-linux-release-clang",
+			"configurePreset": "ci-cfg-linux-release-clang",
+			"displayName": "Linux Release Clang"
 		},
 		{
 			"name": "ci-build-windows-debug-msvc",
