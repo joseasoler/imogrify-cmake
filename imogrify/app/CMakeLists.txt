@@ -7,7 +7,7 @@ add_executable(imogrify main.cpp)
 target_compile_options(imogrify PRIVATE ${IMOGRIFY_CPP_WARNING_FLAGS})
 
 target_link_libraries(imogrify PRIVATE
-	imogrify_locale
+	imogrify_core
 )
 
 install(TARGETS imogrify RUNTIME)

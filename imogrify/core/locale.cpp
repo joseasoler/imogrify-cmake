@@ -3,7 +3,7 @@
  * distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-#include "imfy/locale.hpp"
+#include "include/imfy/locale.hpp"
 
 #include <boost/nowide/filesystem.hpp>
 

@@ -3,9 +3,9 @@
  * distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-#include <imfy/locale.hpp>
-
 #include <cstdlib>
+
+#include "../core/include/imfy/locale.hpp"
 
 int main()
 {

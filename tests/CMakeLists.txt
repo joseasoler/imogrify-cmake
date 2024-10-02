@@ -11,6 +11,5 @@ add_executable(imogrify_tests
 
 target_link_libraries(imogrify_tests PRIVATE
 	Catch2::Catch2
-	imogrify_locale
-	imogrify_string
+	imogrify_core
 )
