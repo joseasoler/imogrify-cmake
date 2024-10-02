@@ -16,7 +16,7 @@
 namespace
 {
 template <typename array>
-consteval bool is_in_sorted_array(const array& arr, const imfy::string_view& str_view)
+constexpr bool is_in_sorted_array(const array& arr, const imfy::string_view& str_view)
 {
 	const auto iterator = std::lower_bound(std::cbegin(arr), std::cend(arr), str_view);
 	return iterator != std::cend(arr) && (*iterator) == str_view;
