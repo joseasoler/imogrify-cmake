@@ -3,6 +3,7 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 add_library(imogrify_core STATIC
+	include/imfy/allocator.hpp
 	include/imfy/locale.hpp
 	include/imfy/string_view.hpp
 	locale.cpp

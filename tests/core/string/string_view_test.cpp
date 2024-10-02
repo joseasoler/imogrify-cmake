@@ -7,7 +7,7 @@
 
 #include "imfy/string_view.hpp"
 
-TEST_CASE("imfy::string_view coherence checks", "[string][string_view]")
+TEST_CASE("imfy::string_view coherence checks", "[core][string_view]")
 {
 	constexpr imfy::string_view test_view{"ÑÇΣѮф"};
 	STATIC_REQUIRE(test_view.size() >= 5U);
