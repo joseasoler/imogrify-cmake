@@ -3,9 +3,9 @@
  * distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-#include <catch2/catch_test_macros.hpp>
-
 #include "imfy/string_view.hpp"
+
+#include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("imfy::string_view coherence checks", "[core][string_view]")
 {

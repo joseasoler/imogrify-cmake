@@ -10,3 +10,10 @@ find_package(Boost 1.73 REQUIRED COMPONENTS
 	# Use UTF-8 when converting char*/string to filesystem::path and vice-versa.
 	filesystem
 )
+
+add_dependency_metadata(
+	NAME Boost
+	VERSION ${Boost_VERSION}
+	DESCRIPTION "The Boost project provides free peer-reviewed portable C++ source libraries."
+	LICENSE_NAME "Boost Software License 1.0"
+)

@@ -7,3 +7,10 @@ include_guard(GLOBAL)
 if (IMOGRIFY_BUILD_UNIT_TESTS)
 	find_package(Catch2 REQUIRED)
 endif ()
+
+add_dependency_metadata(
+	NAME Catch2
+	VERSION ${Catch2_VERSION}
+	DESCRIPTION "A modern, C++-native, test framework."
+	LICENSE_NAME "Boost Software License 1.0"
+)

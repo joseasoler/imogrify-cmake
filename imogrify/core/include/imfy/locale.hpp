@@ -11,4 +11,4 @@ namespace imfy::locale
 /** Use UTF-8 as the default encoding for Boost.Filesystem and the global C++ locale. */
 void initialize();
 
-}
+} // namespace imfy::locale

@@ -10,5 +10,6 @@ This file lists people or groups whose work has been helpful for the development
 * **[Luca Cappa](https://github.com/lukka)** - [run-vcpkg](https://github.com/lukka/run-vcpkg)
 * **[Oleksii Lozovskyi](https://github.com/ilammy)** - [ilammy/msvc-dev-cmd](https://github.com/ilammy/msvc-dev-cmd)
 * **[Sean Middleditch](https://seanmiddleditch.github.io)** - [setup-ninja](https://github.com/seanmiddleditch/gha-setup-ninja)
+* **[SemVer](https://github.com/semver)** - [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 * **[UTF-8 Everywhere Manifesto](http://utf8everywhere.org)**
 * **[Vicky Brasseur](https://www.vmbrasseur.com)** - [Forge your future with Open Source](https://pragprog.com/titles/vbopens/forge-your-future-with-open-source)

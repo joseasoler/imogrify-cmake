@@ -16,7 +16,7 @@ project(imogrify
 	DESCRIPTION "ToDo"
 	HOMEPAGE_URL "https://github.com/joseasoler/imogrify"
 	LANGUAGES C CXX
-	)
+)
 
 # The project uses C++20 without any non-standard compiler extensions.
 set(CMAKE_CXX_STANDARD 20)
@@ -28,6 +28,7 @@ include(cmake/platform.cmake)
 
 include(cmake/clang_tidy.cmake)
 include(cmake/compiler_warnings.cmake)
+include(cmake/dependency_data.cmake)
 
 include(cmake/dependencies/boost.cmake)
 include(cmake/dependencies/catch2.cmake)
