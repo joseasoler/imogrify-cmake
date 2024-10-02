@@ -39,10 +39,7 @@ jobs:
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
         with:
-          vcpkgDirectory: '${{ runner.workspace }}/b/vcpkg'
           vcpkgGitCommitId: 'c82f74667287d3dc386bce81e44964370c91a289' # 2024.09.30
-          runVcpkgInstall: true
-          vcpkgJsonGlob: '**/vcpkg.json'
 
       - name: Setup ninja
         uses: seanmiddleditch/gha-setup-ninja@v5
