@@ -2,13 +2,14 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-add_executable(imogrify main.cpp)
+include_guard(GLOBAL)
 
-target_compile_options(imogrify PRIVATE ${IMOGRIFY_CPP_WARNING_FLAGS})
+find_package(fmt REQUIRED)
 
-target_link_libraries(imogrify PRIVATE
-	imogrify_core
-	fmt::fmt
+add_dependency_metadata(
+	NAME fmt
+	VERSION ${fmt_VERSION}
+	DESCRIPTION "An open-source formatting library."
+	LICENSE_NAME "MIT License"
 )
 
-install(TARGETS imogrify RUNTIME)
