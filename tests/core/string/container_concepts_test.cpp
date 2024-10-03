@@ -5,6 +5,13 @@
 
 #include "imfy/container_concepts.hpp"
 
+#include <imfy/allocator.hpp>
+#include <imfy/dependencies.hpp>
+#include <imfy/string_view.hpp>
+#include <imfy/vector.hpp>
+#include <imfy/version.hpp>
+
+#include <cstdint>
 #include <memory>
 #include <vector>
 
@@ -44,11 +51,29 @@ void swap(movable_exceptions_t& /*lhs*/, movable_exceptions_t& /*rhs*/) noexcept
 }
 } // namespace std
 
-TEST_CASE("imfy::is_containable", "[concept][type_traits]")
+TEST_CASE("imfy::is_containable", "[container_concepts][type_traits]")
 {
-	STATIC_REQUIRE(imfy::is_containable_v<int>);
-	STATIC_REQUIRE(imfy::is_containable_v<std::vector<int*>>);
-	STATIC_REQUIRE(imfy::is_containable_v<std::unique_ptr<float>>);
-	STATIC_REQUIRE(!imfy::is_containable_v<unmovable_t>);
-	STATIC_REQUIRE(!imfy::is_containable_v<movable_exceptions_t>);
+	// Imogrify types.
+	SECTION("Imogrify types")
+	{
+		STATIC_REQUIRE(imfy::is_containable_v<imfy::allocator<std::int8_t>>);
+		STATIC_REQUIRE(imfy::is_containable_v<imfy::dependency_t>);
+		STATIC_REQUIRE(imfy::is_containable_v<imfy::string_view>);
+		STATIC_REQUIRE(imfy::is_containable_v<imfy::version_t>);
+	}
+
+	// Other types.
+	SECTION("Other types")
+	{
+		STATIC_REQUIRE(imfy::is_containable_v<std::int32_t>);
+		STATIC_REQUIRE(imfy::is_containable_v<std::vector<std::uint64_t*>>);
+		STATIC_REQUIRE(imfy::is_containable_v<std::unique_ptr<float>>);
+		STATIC_REQUIRE(imfy::is_containable_v<imfy::vector<std::vector<const char*>>>);
+	}
+
+	SECTION("Non-containable types")
+	{
+		STATIC_REQUIRE(!imfy::is_containable_v<unmovable_t>);
+		STATIC_REQUIRE(!imfy::is_containable_v<movable_exceptions_t>);
+	}
 }
