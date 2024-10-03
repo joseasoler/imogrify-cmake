@@ -7,17 +7,21 @@
 
 #include <imfy/dependency.hpp>
 
-#include <array>
-
 namespace imfy
 {
 
-/** Information about every dependency of the project. */
-constexpr std::array dependencies
-{
+constexpr dependency_t build_information{
+	"@CMAKE_PROJECT_NAME@",
 	// clang-format off
-	@IMOGRIFY_DEPENDENCY_DATA_STRING@
+	{@CMAKE_PROJECT_VERSION_MAJOR@, @CMAKE_PROJECT_VERSION_MINOR@, @CMAKE_PROJECT_VERSION_PATCH@},
 	// clang-format on
+	"@CMAKE_PROJECT_DESCRIPTION@",
+	"Mozilla Public License Version 2.0"
 };
+
+[[nodiscard]] constexpr string_view project_build_type() noexcept
+{
+	return "@CMAKE_BUILD_TYPE@";
+}
 
 } // namespace imfy

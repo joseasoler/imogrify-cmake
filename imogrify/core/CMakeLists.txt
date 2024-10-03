@@ -6,9 +6,11 @@ list(SORT IMOGRIFY_DEPENDENCY_DATA_LIST CASE INSENSITIVE)
 
 string(REPLACE ";" "" IMOGRIFY_DEPENDENCY_DATA_STRING "${IMOGRIFY_DEPENDENCY_DATA_LIST}")
 
+configure_file(include/imfy/build.hpp.in include/imfy/build.hpp @ONLY)
 configure_file(include/imfy/dependencies.hpp.in include/imfy/dependencies.hpp @ONLY)
 
 add_library(imogrify_core STATIC
+	${CMAKE_CURRENT_BINARY_DIR}/include/imfy/build.hpp
 	${CMAKE_CURRENT_BINARY_DIR}/include/imfy/dependencies.hpp
 	include/imfy/allocator.hpp
 	include/imfy/locale.hpp

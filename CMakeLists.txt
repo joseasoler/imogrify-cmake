@@ -14,8 +14,8 @@ if (POLICY CMP0167)
 endif ()
 
 project(imogrify
-	VERSION 0.0.0
-	DESCRIPTION "ToDo"
+	VERSION 0.1.0
+	DESCRIPTION "ToDo."
 	HOMEPAGE_URL "https://github.com/joseasoler/imogrify"
 	LANGUAGES C CXX
 )
@@ -33,6 +33,7 @@ include(cmake/compiler_warnings.cmake)
 
 include(cmake/dependencies/boost.cmake)
 include(cmake/dependencies/catch2.cmake)
+include(cmake/dependencies/fmt.cmake)
 
 add_subdirectory(imogrify)
 

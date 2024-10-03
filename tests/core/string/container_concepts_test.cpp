@@ -6,7 +6,7 @@
 #include "imfy/container_concepts.hpp"
 
 #include <imfy/allocator.hpp>
-#include <imfy/dependencies.hpp>
+#include <imfy/dependency.hpp>
 #include <imfy/string_view.hpp>
 #include <imfy/vector.hpp>
 #include <imfy/version.hpp>

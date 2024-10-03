@@ -5,6 +5,7 @@
 
 #include "imfy/dependencies.hpp"
 
+#include <imfy/dependency.hpp>
 #include <imfy/string_view.hpp>
 #include <imfy/version.hpp>
 
