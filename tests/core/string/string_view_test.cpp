@@ -9,6 +9,7 @@
 
 TEST_CASE("imfy::string_view coherence checks", "[core][string_view]")
 {
-	constexpr imfy::string_view test_view{"ÑÇΣѮф"};
+	using namespace imfy::literals::string_view_literals;
+	constexpr auto test_view{"ÑÇΣѮф"_sv};
 	STATIC_REQUIRE(test_view.size() >= 5U);
 }

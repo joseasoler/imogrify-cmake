@@ -17,4 +17,12 @@ namespace imfy
  */
 using string_view = std::string_view;
 
+namespace literals::string_view_literals
+{
+constexpr string_view operator""_sv(const char* string, size_t length) noexcept
+{
+	return string_view{string, length};
+}
+} // namespace literals::string_view_literals
+
 } // namespace imfy

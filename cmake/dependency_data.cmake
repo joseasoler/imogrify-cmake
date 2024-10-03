@@ -40,7 +40,6 @@ function(add_dependency_metadata)
 	string(REPLACE "." "," DPND_VERSION ${DPND_VERSION})
 	set(DPND_VERSION "{${DPND_VERSION}}")
 
-
 	set(DPND_METADATA "dependency_t{\"${DPND_NAME}\",${DPND_VERSION},\"${DPND_DESCRIPTION}\",\"${DPND_LICENSE_NAME}\",},\n")
 
 	# Append the target to the list of known dependency targets.
