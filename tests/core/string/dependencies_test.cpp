@@ -83,11 +83,12 @@ TEST_CASE("imfy::dependencies values", "[core][dependencies]")
 
 	SECTION("All licenses are compatible with Imogrify.")
 	{
-		constexpr std::array compatible_licenses{"Boost Software License 1.0"};
+		constexpr std::array<imfy::string_view, 2> compatible_licenses{"Boost Software License 1.0", "MIT License"};
 		STATIC_REQUIRE(std::is_sorted(std::cbegin(compatible_licenses), std::cend(compatible_licenses)));
 
 		STATIC_REQUIRE(std::all_of(
-				std::cbegin(dependencies), std::cend(dependencies), [&compatible_licenses](const dependency_t& dependency) -> bool
+				std::cbegin(dependencies), std::cend(dependencies),
+				[&compatible_licenses](const dependency_t& dependency) -> bool
 				{ return is_in_sorted_array(compatible_licenses, dependency.license_name); }
 		));
 	}

@@ -12,6 +12,3 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 		"Include most Clang warnings. This may trigger unexpected positives when using newer Clang versions." OFF)
 endif ()
 
-if (IMOGRIFY_BUILD_UNIT_TESTS)
-	list(APPEND VCPKG_MANIFEST_FEATURES "tests")
-endif ()

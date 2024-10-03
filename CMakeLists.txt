@@ -5,6 +5,8 @@
 cmake_minimum_required(VERSION 3.25)
 
 include(cmake/options.cmake)
+include(cmake/dependency_data.cmake)
+include(cmake/dependencies/vcpkg.cmake)
 
 if (POLICY CMP0167)
 	# FindBoost module is removed policy.
@@ -28,7 +30,6 @@ include(cmake/platform.cmake)
 
 include(cmake/clang_tidy.cmake)
 include(cmake/compiler_warnings.cmake)
-include(cmake/dependency_data.cmake)
 
 include(cmake/dependencies/boost.cmake)
 include(cmake/dependencies/catch2.cmake)
