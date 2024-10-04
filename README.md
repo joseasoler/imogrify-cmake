@@ -37,7 +37,7 @@ Building imogrify requires [CMake](https://cmake.org/) and a [compiler with C++2
 
 imogrify includes a set of CMake presets intended for use in CI. These presets use [vcpkg](https://github.com/microsoft/vcpkg) to retrieve and build the dependencies.
 
-To use these presets locally, you will need to [install vcpkg](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started) and set the environment variable `VCPKG_ROOT` to its path. It is recommended to install vcpkg in a short path to avoid building issues with some dependencies.
+To use these presets locally, you will need to [install vcpkg](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started) and set the environment variable `VCPKG_ROOT` to its path. It is recommended to install vcpkg in a short path to avoid building issues with some dependencies. Keep in mind that [vcpkg collects telemetry data by default](https://learn.microsoft.com/en-us/vcpkg/about/privacy). It is possible to disable it by setting the `VCPKG_DISABLE_METRICS` environment variable.
 
 ## Acknowledgements
 
