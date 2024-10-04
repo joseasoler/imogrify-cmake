@@ -7,7 +7,7 @@
 
 #include <catch2/catch_test_macros.hpp>
 
-TEST_CASE("Build information", "[core][build]")
+TEST_CASE("Project information", "[core][build]")
 {
 	SECTION("Project name has been generated correctly.")
 	{
@@ -39,9 +39,22 @@ TEST_CASE("Build information", "[core][build]")
 				imfy::build_information.version.patch > 0U
 		);
 	}
+}
 
+TEST_CASE("Build information", "[core][build]")
+{
 	SECTION("imfy::project_build_type has been generated correctly.")
 	{
 		STATIC_REQUIRE(!imfy::project_build_type().empty());
+	}
+
+	SECTION("imfy::project_compiler_name has been generated correctly.")
+	{
+		STATIC_REQUIRE(!imfy::project_compiler_name().empty());
+	}
+
+	SECTION("imfy::project_compiler_version has been generated correctly.")
+	{
+		STATIC_REQUIRE(!imfy::project_compiler_version().empty());
 	}
 }

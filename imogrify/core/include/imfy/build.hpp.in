@@ -25,4 +25,14 @@ constexpr dependency_t build_information
 	return "@CMAKE_BUILD_TYPE@";
 }
 
+[[nodiscard]] constexpr std::string_view project_compiler_name() noexcept
+{
+	return "@IMOGRIFY_COMPILER_NAME@";
+}
+
+[[nodiscard]] constexpr std::string_view project_compiler_version() noexcept
+{
+	return "@CMAKE_CXX_COMPILER_VERSION@";
+}
+
 } // namespace imfy

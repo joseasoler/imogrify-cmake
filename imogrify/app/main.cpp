@@ -17,9 +17,10 @@ int main()
 
 	using imfy::build_information;
 	fmt::println(
-			"{:s}: {:s} Version: {:d}.{:d}.{:d}. License: {:s}. Build type: {:s}.", build_information.name,
-			build_information.description, build_information.version.major, build_information.version.minor,
-			build_information.version.patch, build_information.license_name, imfy::project_build_type()
+			"{:s}: {:s} Version: {:d}.{:d}.{:d}. License: {:s}. Build type: {:s}. Compiler: {:s} {:s}",
+			build_information.name, build_information.description, build_information.version.major,
+			build_information.version.minor, build_information.version.patch, build_information.license_name,
+			imfy::project_build_type(), imfy::project_compiler_name(), imfy::project_compiler_version()
 	);
 
 	fmt::println("");

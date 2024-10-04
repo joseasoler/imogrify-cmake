@@ -6,6 +6,9 @@ list(SORT IMOGRIFY_DEPENDENCY_DATA_LIST CASE INSENSITIVE)
 
 string(REPLACE ";" "" IMOGRIFY_DEPENDENCY_DATA_STRING "${IMOGRIFY_DEPENDENCY_DATA_LIST}")
 
+string(REPLACE "GNU" "GCC" IMOGRIFY_COMPILER_NAME "${CMAKE_CXX_COMPILER_ID}")
+string(REPLACE "MSVC" "Microsoft Visual C++" IMOGRIFY_COMPILER_NAME "${IMOGRIFY_COMPILER_NAME}")
+
 configure_file(include/imfy/build.hpp.in include/imfy/build.hpp @ONLY)
 configure_file(include/imfy/dependencies.hpp.in include/imfy/dependencies.hpp @ONLY)
 

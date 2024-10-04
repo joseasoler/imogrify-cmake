@@ -5,6 +5,7 @@
 include_guard(GLOBAL)
 
 if (VCPKG_TARGET_TRIPLET)
+	# Define optional vcpkg manifest features depending on CMake option status.
 	if (IMOGRIFY_BUILD_UNIT_TESTS)
 		list(APPEND VCPKG_MANIFEST_FEATURES "tests")
 	endif ()
