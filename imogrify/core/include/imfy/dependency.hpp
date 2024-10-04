@@ -5,8 +5,9 @@
 
 #pragma once
 
-#include <imfy/string_view.hpp>
 #include <imfy/version.hpp>
+
+#include <string_view>
 
 namespace imfy
 {
@@ -16,16 +17,16 @@ namespace imfy
 struct dependency_t
 {
 	/** Name of the library. */
-	string_view name;
+	std::string_view name;
 
 	/** <A HREF="https://semver.org/">Semantic version_t</A> being used. */
 	version_t version;
 
 	/** Short description of the library */
-	string_view description;
+	std::string_view description;
 
 	/** Short name of the library's license. */
-	string_view license_name;
+	std::string_view license_name;
 };
 
 } // namespace imfy

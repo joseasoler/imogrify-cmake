@@ -10,7 +10,8 @@
 namespace imfy
 {
 
-constexpr dependency_t build_information{
+constexpr dependency_t build_information
+{
 	"@CMAKE_PROJECT_NAME@",
 	// clang-format off
 	{@CMAKE_PROJECT_VERSION_MAJOR@, @CMAKE_PROJECT_VERSION_MINOR@, @CMAKE_PROJECT_VERSION_PATCH@},
@@ -19,7 +20,7 @@ constexpr dependency_t build_information{
 	"Mozilla Public License Version 2.0"
 };
 
-[[nodiscard]] constexpr string_view project_build_type() noexcept
+[[nodiscard]] constexpr std::string_view project_build_type() noexcept
 {
 	return "@CMAKE_BUILD_TYPE@";
 }

@@ -12,10 +12,7 @@ configure_file(include/imfy/dependencies.hpp.in include/imfy/dependencies.hpp @O
 add_library(imogrify_core STATIC
 	${CMAKE_CURRENT_BINARY_DIR}/include/imfy/build.hpp
 	${CMAKE_CURRENT_BINARY_DIR}/include/imfy/dependencies.hpp
-	include/imfy/allocator.hpp
 	include/imfy/locale.hpp
-	include/imfy/string_view.hpp
-	include/imfy/vector.hpp
 	include/imfy/version.hpp
 	locale.cpp
 )

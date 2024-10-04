@@ -6,18 +6,18 @@
 #include "imfy/dependencies.hpp"
 
 #include <imfy/dependency.hpp>
-#include <imfy/string_view.hpp>
 #include <imfy/version.hpp>
 
 #include <algorithm>
 #include <array>
+#include <string_view>
 
 #include <catch2/catch_test_macros.hpp>
 
 namespace
 {
 template <typename array>
-constexpr bool is_in_sorted_array(const array& arr, const imfy::string_view& str_view)
+constexpr bool is_in_sorted_array(const array& arr, const std::string_view& str_view)
 {
 	const auto iterator = std::lower_bound(std::cbegin(arr), std::cend(arr), str_view);
 	return iterator != std::cend(arr) && (*iterator) == str_view;
@@ -84,8 +84,8 @@ TEST_CASE("imfy::dependencies values", "[core][dependencies]")
 
 	SECTION("All licenses are compatible with Imogrify.")
 	{
-		using namespace imfy::literals::string_view_literals;
-		constexpr std::array compatible_licenses{"Boost Software License 1.0"_sv, "MIT License"_sv};
+		using namespace std::literals::string_view_literals;
+		constexpr std::array compatible_licenses{"Boost Software License 1.0"sv, "MIT License"sv};
 		STATIC_REQUIRE(std::is_sorted(std::cbegin(compatible_licenses), std::cend(compatible_licenses)));
 
 		STATIC_REQUIRE(std::all_of(
