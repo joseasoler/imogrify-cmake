@@ -91,5 +91,7 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 		/w14906      # String literal cast to 'LPWSTR'.
 		/w14928      # Illegal copy-initialization; applied more than one user-defined conversion.
 		/analyze     # Code analysis.
+		# Warnings triggered by external headers are disabled here, as /external does not seem to work as expected.
+		/wd6239      # fmt.
 	)
 endif ()
