@@ -5,12 +5,12 @@
 
 #include "imfy/dependencies.hpp"
 
-#include <imfy/dependency.hpp>
-#include <imfy/version.hpp>
-
 #include <algorithm>
 #include <array>
 #include <string_view>
+
+#include "imfy/dependency.hpp"
+#include "imfy/version.hpp"
 
 #include <catch2/catch_test_macros.hpp>
 

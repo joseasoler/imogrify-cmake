@@ -16,8 +16,10 @@ add_library(imogrify_core STATIC
 	${CMAKE_CURRENT_BINARY_DIR}/include/imfy/build.hpp
 	${CMAKE_CURRENT_BINARY_DIR}/include/imfy/dependencies.hpp
 	include/imfy/locale.hpp
+	include/imfy/path.hpp
 	include/imfy/version.hpp
 	locale.cpp
+	path.cpp
 )
 
 target_include_directories(imogrify_core PUBLIC

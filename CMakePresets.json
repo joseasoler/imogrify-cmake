@@ -119,7 +119,7 @@
 			"name": "ci-cfg-windows-release-msvc",
 			"inherits": [
 				"ci-cfg-base",
-				"ci-cfg-debug",
+				"ci-cfg-release",
 				"ci-cfg-windows"
 			],
 			"displayName": "Windows MSVC release config",

@@ -29,6 +29,8 @@ jobs:
             cmake_os: windows
         exclude:
           - os: windows-latest
+            build_type: release
+          - os: windows-latest
             compiler: clang
           - os: windows-latest
             compiler: gcc

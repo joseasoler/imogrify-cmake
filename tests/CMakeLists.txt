@@ -6,8 +6,9 @@ find_package(Catch2 REQUIRED)
 
 add_executable(imogrify_tests
 	tests_main.cpp
-	core/string/build_test.cpp
-	core/string/dependencies_test.cpp
+	core/build_test.cpp
+	core/dependencies_test.cpp
+	core/path_test.cpp
 )
 
 target_link_libraries(imogrify_tests PRIVATE
