@@ -28,8 +28,6 @@ function(add_dependency_metadata)
 		message(FATAL_ERROR "add_dependency_metadata(${DPND_NAME}) called without a LICENSE_NAME.")
 	endif ()
 
-	message(STATUS "Adding dependency metadata entry for ${DPND_NAME}")
-
 	# Convert version format.
 	string(REPLACE "." ";" DPND_VERSION_LIST ${DPND_VERSION})
 	list(LENGTH DPND_VERSION_LIST DPND_VERSION_SIZE)
