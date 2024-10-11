@@ -10,7 +10,6 @@
 TEST_CASE("Path utility functions tests", "[core][path]")
 {
 	using imfy::fs::has_extension;
-	using imfy::fs::path;
 	using imfy::fs::path_view;
 
 	constexpr path_view png_extension{PATH_LITERAL("png")};

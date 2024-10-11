@@ -11,15 +11,15 @@
 
 TEST_CASE("None Image format extension tests", "[arguments][image_format]")
 {
-	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::none, "file.none"));
-	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::none, "file.png"));
-	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::none, "file.jpg"));
-	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::none, "file"));
+	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::none, PATH_LITERAL("file.none")));
+	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::none, PATH_LITERAL("file.png")));
+	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::none, PATH_LITERAL("file.jpg")));
+	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::none, PATH_LITERAL("file")));
 }
 
 TEST_CASE("PNG Image format extension tests", "[arguments][image_format]")
 {
-	REQUIRE(imfy::file_matches_image_format(imfy::image_format::png, "file.png"));
-	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::png, "file.apng"));
-	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::png, "file"));
+	REQUIRE(imfy::file_matches_image_format(imfy::image_format::png, PATH_LITERAL("file.png")));
+	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::png, PATH_LITERAL("file.apng")));
+	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::png, PATH_LITERAL("file")));
 }

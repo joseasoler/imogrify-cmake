@@ -26,7 +26,7 @@ enum class image_format : image_format_t
 	png,
 };
 
-[[nodiscard]] bool file_matches_image_format(image_format type, const fs::path& file_path);
+[[nodiscard]] bool file_matches_image_format(image_format type, fs::path_view file_path);
 
 enum class png_image_format : image_format_t
 {

@@ -7,24 +7,22 @@
 
 #include <boost/filesystem/path.hpp>
 
-#include <algorithm>
-
 #if IMOGRIFY_OS_WINDOWS
 #include <cwctype>
 #else
 #include <cctype>
 #endif // IMOGRIFY_OS_WINDOWS
 
-using path_string = imfy::fs::path::string_type;
-using path_char = path_string::value_type;
+using path_string = boost::filesystem::path::string_type;
+using imfy::fs::path_char_t;
 
 namespace
 {
 
 #if IMOGRIFY_OS_WINDOWS
-constexpr path_char path_separator = L'.';
+constexpr path_char_t path_separator = L'.';
 #else
-constexpr path_char path_separator = '.';
+constexpr path_char_t path_separator = '.';
 #endif // IMOGRIFY_OS_WINDOWS
 
 /**
@@ -35,7 +33,7 @@ constexpr path_char path_separator = '.';
  */
 bool insensitive_equals(const imfy::fs::path_view lhs, const imfy::fs::path_view rhs)
 {
-	const auto char_insensitive_equals = [](const path_char lhsc, const path_char rhsc) -> bool
+	const auto char_insensitive_equals = [](const path_char_t lhsc, const path_char_t rhsc) -> bool
 	{
 #if IMOGRIFY_OS_WINDOWS
 		return std::towlower(lhsc) == rhsc;
@@ -47,16 +45,15 @@ bool insensitive_equals(const imfy::fs::path_view lhs, const imfy::fs::path_view
 }
 
 /** Get a view to the path extension without allocating additional path objects. */
-imfy::fs::path_view extension_view(const imfy::fs::path& path)
+imfy::fs::path_view extension_view(imfy::fs::path_view path)
 {
-	const auto& path_str = path.native();
-	const auto pos = path_str.find_last_of(path_separator);
+	const auto pos = path.find_last_of(path_separator);
 	if (pos == path_string::npos)
 	{
 		return {};
 	}
 
-	return {path_str.cbegin() + static_cast<path_string::difference_type>(pos + 1U), path_str.cend()};
+	return {path.cbegin() + static_cast<path_string::difference_type>(pos + 1U), path.cend()};
 }
 
 } // Anonymous namespace
@@ -64,7 +61,7 @@ imfy::fs::path_view extension_view(const imfy::fs::path& path)
 namespace imfy::fs
 {
 
-bool has_extension(path_view extension, const path& file_path)
+bool has_extension(path_view extension, path_view file_path)
 {
 	return insensitive_equals(extension_view(file_path), extension);
 }
