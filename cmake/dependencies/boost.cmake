@@ -19,7 +19,6 @@ add_dependency_metadata(
 	LICENSE_NAME "Boost Software License 1.0"
 )
 
-# Then each separate library is listed explicitly.
 add_dependency_metadata(
 	NAME Boost.NoWide
 	VERSION ${Boost_VERSION}

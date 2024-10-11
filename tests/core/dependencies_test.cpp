@@ -6,18 +6,33 @@
 #include "imfy/dependencies.hpp"
 
 #include <algorithm>
-#include <array>
 #include <string_view>
 
 #include "imfy/dependency.hpp"
 #include "imfy/version.hpp"
 
 #include <catch2/catch_test_macros.hpp>
-
 namespace
 {
+
+constexpr char to_lower(const char character)
+{
+	return character >= 'A' && character <= 'Z' ? static_cast<char>(character + 'a' - 'A') : character;
+}
+
+struct is_case_insensitive_less final
+{
+	constexpr bool operator()(const imfy::dependency_t& lhs, const imfy::dependency_t& rhs)
+	{
+		return std::lexicographical_compare(
+				lhs.name.cbegin(), lhs.name.cend(), rhs.name.cbegin(), rhs.name.cend(),
+				[](const char left, const char right) { return to_lower(left) < to_lower(right); }
+		);
+	}
+};
+
 template <typename array>
-constexpr bool is_in_sorted_array(const array& arr, const std::string_view& str_view)
+[[nodiscard]] constexpr bool is_in_sorted_array(const array& arr, const std::string_view& str_view)
 {
 	const auto iterator = std::lower_bound(std::cbegin(arr), std::cend(arr), str_view);
 	return iterator != std::cend(arr) && (*iterator) == str_view;
@@ -37,10 +52,7 @@ TEST_CASE("imfy::dependencies array", "[core][dependencies]")
 
 	SECTION("The dependencies array is sorted by name.")
 	{
-		STATIC_REQUIRE(std::is_sorted(
-				std::cbegin(dependencies), std::cend(dependencies),
-				[](const dependency_t& lhs, const dependency_t& rhs) -> bool { return lhs.name < rhs.name; }
-		));
+		STATIC_REQUIRE(std::is_sorted(std::cbegin(dependencies), std::cend(dependencies), is_case_insensitive_less{}));
 	}
 }
 

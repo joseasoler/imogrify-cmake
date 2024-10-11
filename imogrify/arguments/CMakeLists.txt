@@ -15,5 +15,6 @@ target_include_directories(imogrify_arguments PUBLIC
 target_compile_options(imogrify_arguments PRIVATE ${IMOGRIFY_CPP_WARNING_FLAGS})
 
 target_link_libraries(imogrify_arguments PRIVATE
+	magic_enum::magic_enum
 	imogrify_core
 )

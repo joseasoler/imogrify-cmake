@@ -9,6 +9,16 @@
 
 #include <catch2/catch_test_macros.hpp>
 
+TEST_CASE("Get image format from input", "[arguments][image_format]")
+{
+	REQUIRE(imfy::image_format_from_input("") == imfy::image_format::none);
+	REQUIRE(imfy::image_format_from_input("png") == imfy::image_format::png);
+	REQUIRE(imfy::image_format_from_input("Png") == imfy::image_format::png);
+	REQUIRE(imfy::image_format_from_input("PnG") == imfy::image_format::png);
+	REQUIRE(imfy::image_format_from_input("pNG") == imfy::image_format::png);
+	REQUIRE(imfy::image_format_from_input("apng") == imfy::image_format::none);
+}
+
 TEST_CASE("None Image format extension tests", "[arguments][image_format]")
 {
 	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::none, PATH_LITERAL("file.none")));

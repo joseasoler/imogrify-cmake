@@ -4,7 +4,8 @@
 	"dependencies": [
 		"boost-filesystem",
 		"boost-nowide",
-		"fmt"
+		"fmt",
+		"magic-enum"
 	],
 	"features": {
 		"tests": {

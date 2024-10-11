@@ -8,6 +8,7 @@
 #include <imfy/path.hpp>
 
 #include <cstdint>
+#include <string_view>
 
 namespace imfy
 {
@@ -26,10 +27,16 @@ enum class image_format : image_format_t
 	png,
 };
 
+/** Parse an image format value from user input. */
+[[nodiscard]] image_format image_format_from_input(std::string_view input);
+
+/** Checks if a file has an extension belonging to the chosen image format. */
 [[nodiscard]] bool file_matches_image_format(image_format type, fs::path_view file_path);
 
 enum class png_image_format : image_format_t
 {
+	/* Invalid PNG image format. */
+	none,
 	/** Palette with 8 bits per channel. */
 	palette_8,
 	/** Grayscale with 8 bits per channel. */

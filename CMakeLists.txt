@@ -15,7 +15,7 @@ endif ()
 
 project(imogrify
 	VERSION 0.1.0
-	DESCRIPTION "ToDo."
+	DESCRIPTION "Image conversion tool optimized for processing large batches of files."
 	HOMEPAGE_URL "https://github.com/joseasoler/imogrify"
 	LANGUAGES C CXX
 )
@@ -35,6 +35,7 @@ include(cmake/compiler_warnings.cmake)
 include(cmake/dependencies/boost.cmake)
 include(cmake/dependencies/catch2.cmake)
 include(cmake/dependencies/fmt.cmake)
+include(cmake/dependencies/magic_enum.cmake)
 
 add_subdirectory(imogrify)
 

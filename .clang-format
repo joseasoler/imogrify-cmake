@@ -119,9 +119,11 @@ IncludeCategories:
   # SortPriority can be used to sort includes in the same group.
   - Regex: '^<imfy.*'
     Priority: 100
+  - Regex: '^<boost.*'
+    Priority: 300
   - Regex: '^<fmt.*'
     Priority: 300
-  - Regex: '^<boost.*'
+  - Regex: '^<magic_enum.*'
     Priority: 300
   - Regex: '^<catch2.*'
     Priority: 1000
