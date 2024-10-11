@@ -6,15 +6,14 @@
 #include "include/imfy/path.hpp"
 
 #include <boost/filesystem/path.hpp>
-#include <boost/predef/os.h>
 
 #include <algorithm>
 
-#if BOOST_OS_WINDOWS
+#if IMOGRIFY_OS_WINDOWS
 #include <cwctype>
 #else
 #include <cctype>
-#endif // BOOST_OS_WINDOWS
+#endif // IMOGRIFY_OS_WINDOWS
 
 using path_string = imfy::fs::path::string_type;
 using path_char = path_string::value_type;
@@ -22,11 +21,11 @@ using path_char = path_string::value_type;
 namespace
 {
 
-#if BOOST_OS_WINDOWS
+#if IMOGRIFY_OS_WINDOWS
 constexpr path_char path_separator = L'.';
 #else
 constexpr path_char path_separator = '.';
-#endif // BOOST_OS_WINDOWS
+#endif // IMOGRIFY_OS_WINDOWS
 
 /**
  * Checks if two path views are case insensitive equal.
@@ -38,11 +37,11 @@ bool insensitive_equals(const imfy::fs::path_view lhs, const imfy::fs::path_view
 {
 	const auto char_insensitive_equals = [](const path_char lhsc, const path_char rhsc) -> bool
 	{
-#if BOOST_OS_WINDOWS
+#if IMOGRIFY_OS_WINDOWS
 		return std::towlower(lhsc) == rhsc;
 #else
 		return std::tolower(lhsc) == rhsc;
-#endif // BOOST_OS_WINDOWS
+#endif // IMOGRIFY_OS_WINDOWSs
 	};
 	return lhs.size() == rhs.size() && std::equal(lhs.cbegin(), lhs.cend(), rhs.cbegin(), char_insensitive_equals);
 }

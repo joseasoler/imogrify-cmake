@@ -33,11 +33,3 @@ add_dependency_metadata(
 	DESCRIPTION "Provides portable facilities to query and manipulate paths, files, and directories."
 	LICENSE_NAME "Boost Software License 1.0"
 )
-
-add_dependency_metadata(
-	NAME Boost.Predef
-	VERSION ${Boost_VERSION}
-	DESCRIPTION "Defines a set of compiler, architecture, operating system, library, and other version numbers."
-	LICENSE_NAME "Boost Software License 1.0"
-)
-

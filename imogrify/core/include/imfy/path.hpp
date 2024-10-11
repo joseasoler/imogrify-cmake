@@ -6,7 +6,6 @@
 #pragma once
 
 #include <boost/filesystem/path.hpp>
-#include <boost/predef/os.h>
 
 #include <string_view>
 
@@ -21,13 +20,13 @@ using path = boost::filesystem::path;
  */
 using path_view = std::basic_string_view<path::value_type>;
 
-#if BOOST_OS_WINDOWS
+#if IMOGRIFY_OS_WINDOWS
 /** Cross-platform helper for defining string literals of the type expected by path_view. */
 #define PATH_LITERAL(literal) L##literal
 #else
 /** Cross-platform helper for defining string literals of the type expected by path_view. */
 #define PATH_LITERAL(literal) literal
-#endif // BOOST_OS_WINDOWS
+#endif // IMOGRIFY_OS_WINDOWS
 
 /**
  * Case insensitive check for files having the specified extension.

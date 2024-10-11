@@ -4,8 +4,6 @@
 
 include_guard(GLOBAL)
 
-message(STATUS "Setting up platform-specific options")
-
 # Platform or compiler-specific defines.
 if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 	# imogrify uses UTF-8 by default, unless forced to do otherwise by the Windows API.
