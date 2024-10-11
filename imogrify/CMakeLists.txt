@@ -3,4 +3,5 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 add_subdirectory(core)
+add_subdirectory(arguments)
 add_subdirectory(app)

@@ -29,7 +29,7 @@ target_include_directories(imogrify_core PUBLIC
 
 target_compile_options(imogrify_core PRIVATE ${IMOGRIFY_CPP_WARNING_FLAGS})
 
-target_link_libraries(imogrify_core PRIVATE
+target_link_libraries(imogrify_core PUBLIC
 	Boost::filesystem
 	Boost::nowide
 )

@@ -9,9 +9,11 @@ add_executable(imogrify_tests
 	core/build_test.cpp
 	core/dependencies_test.cpp
 	core/path_test.cpp
+	arguments/image_format_test.cpp
 )
 
 target_link_libraries(imogrify_tests PRIVATE
 	Catch2::Catch2
 	imogrify_core
+	imogrify_arguments
 )
