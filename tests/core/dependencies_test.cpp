@@ -24,7 +24,7 @@ constexpr char to_lower(const char character)
 
 struct is_case_insensitive_less final
 {
-	constexpr bool operator()(const std::string_view lhs, const std::string_view rhs)
+	constexpr bool operator()(const std::string_view lhs, const std::string_view rhs) const
 	{
 		return std::lexicographical_compare(
 				lhs.cbegin(), lhs.cend(), rhs.cbegin(), rhs.cend(),
@@ -32,7 +32,7 @@ struct is_case_insensitive_less final
 		);
 	}
 
-	constexpr bool operator()(const imfy::dependency_t& lhs, const imfy::dependency_t& rhs)
+	constexpr bool operator()(const imfy::dependency_t& lhs, const imfy::dependency_t& rhs) const
 	{
 		return operator()(lhs.name, rhs.name);
 	}
