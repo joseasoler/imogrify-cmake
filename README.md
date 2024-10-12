@@ -26,6 +26,8 @@ Building imogrify requires [CMake](https://cmake.org/) and a [compiler with C++2
 
 * **[fmt](https://fmt.dev/latest/index.html)**: Provides formatting and printing utilities.
 
+* **[Magic Enum](https://github.com/Neargye/magic_enum)**: Provides static reflection for enums.
+
 ### CMake options
 
 * `CMAKE_COMPILE_WARNING_AS_ERROR`: When this option is enabled, compilers will treat warnings as errors. If `IMOGRIFY_CLANG_TIDY` is enabled, [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) will also treat its warnings as errors.
