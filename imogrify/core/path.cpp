@@ -47,7 +47,7 @@ bool insensitive_equals(const imfy::fs::path_view lhs, const imfy::fs::path_view
 }
 
 /** Get a view to the path extension without allocating additional path objects. */
-imfy::fs::path_view extension_view(imfy::fs::path_view path)
+imfy::fs::path_view extension_view(const imfy::fs::path_view path)
 {
 	const auto pos = path.find_last_of(path_separator);
 	if (pos == path_string::npos)
@@ -63,7 +63,7 @@ imfy::fs::path_view extension_view(imfy::fs::path_view path)
 namespace imfy::fs
 {
 
-bool has_extension(path_view extension, path_view file_path)
+bool has_extension(const path_view extension, const path_view file_path)
 {
 	return insensitive_equals(extension_view(file_path), extension);
 }

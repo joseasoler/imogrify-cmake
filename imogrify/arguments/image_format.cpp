@@ -15,7 +15,7 @@
 
 namespace
 {
-// The forward slash character is forbidden in both Unix and Windows systems.
+// The forward slash character is used for none because it is forbidden in both Unix and Windows systems.
 constexpr std::array image_format_extensions{PATH_LITERAL("/"), PATH_LITERAL("png")};
 
 } // Anonymous namespace

@@ -24,19 +24,24 @@ constexpr char to_lower(const char character)
 
 struct is_case_insensitive_less final
 {
-	constexpr bool operator()(const imfy::dependency_t& lhs, const imfy::dependency_t& rhs)
+	constexpr bool operator()(const std::string_view lhs, const std::string_view rhs)
 	{
 		return std::lexicographical_compare(
-				lhs.name.cbegin(), lhs.name.cend(), rhs.name.cbegin(), rhs.name.cend(),
+				lhs.cbegin(), lhs.cend(), rhs.cbegin(), rhs.cend(),
 				[](const char left, const char right) { return to_lower(left) < to_lower(right); }
 		);
+	}
+
+	constexpr bool operator()(const imfy::dependency_t& lhs, const imfy::dependency_t& rhs)
+	{
+		return operator()(lhs.name, rhs.name);
 	}
 };
 
 template <typename array>
 [[nodiscard]] constexpr bool is_in_sorted_array(const array& arr, const std::string_view& str_view)
 {
-	const auto iterator = std::lower_bound(std::cbegin(arr), std::cend(arr), str_view);
+	const auto iterator = std::lower_bound(arr.cbegin(), arr.cend(), str_view);
 	return iterator != std::cend(arr) && (*iterator) == str_view;
 }
 
@@ -54,7 +59,7 @@ TEST_CASE("imfy::dependencies array", "[core][dependencies]")
 
 	SECTION("The dependencies array is sorted by name.")
 	{
-		STATIC_REQUIRE(std::is_sorted(std::cbegin(dependencies), std::cend(dependencies), is_case_insensitive_less{}));
+		STATIC_REQUIRE(std::is_sorted(dependencies.cbegin(), dependencies.cend(), is_case_insensitive_less{}));
 	}
 }
 
@@ -67,7 +72,7 @@ TEST_CASE("imfy::dependencies values", "[core][dependencies]")
 	SECTION("All dependencies have a name.")
 	{
 		STATIC_REQUIRE(std::all_of(
-				std::cbegin(dependencies), std::cend(dependencies),
+				dependencies.cbegin(), dependencies.cend(),
 				[](const dependency_t& dependency) -> bool { return !dependency.name.empty(); }
 		));
 	}
@@ -75,7 +80,7 @@ TEST_CASE("imfy::dependencies values", "[core][dependencies]")
 	SECTION("All dependencies have a valid version.")
 	{
 		STATIC_REQUIRE(std::all_of(
-				std::cbegin(dependencies), std::cend(dependencies), [](const dependency_t& dependency) -> bool
+				dependencies.cbegin(), dependencies.cend(), [](const dependency_t& dependency) -> bool
 				{ return dependency.version.major != 0U || dependency.version.minor != 0U || dependency.version.patch != 0U; }
 		));
 	}
@@ -83,7 +88,7 @@ TEST_CASE("imfy::dependencies values", "[core][dependencies]")
 	SECTION("All dependencies have a description.")
 	{
 		STATIC_REQUIRE(std::all_of(
-				std::cbegin(dependencies), std::cend(dependencies),
+				dependencies.cbegin(), dependencies.cend(),
 				[](const dependency_t& dependency) -> bool { return !dependency.description.empty(); }
 		));
 	}
@@ -91,7 +96,7 @@ TEST_CASE("imfy::dependencies values", "[core][dependencies]")
 	SECTION("All dependencies have a license name.")
 	{
 		STATIC_REQUIRE(std::all_of(
-				std::cbegin(dependencies), std::cend(dependencies),
+				dependencies.cbegin(), dependencies.cend(),
 				[](const dependency_t& dependency) -> bool { return !dependency.license_name.empty(); }
 		));
 	}
@@ -100,11 +105,11 @@ TEST_CASE("imfy::dependencies values", "[core][dependencies]")
 	{
 		using namespace std::literals::string_view_literals;
 		constexpr std::array compatible_licenses{"Boost Software License 1.0"sv, "MIT License"sv};
-		STATIC_REQUIRE(std::is_sorted(std::cbegin(compatible_licenses), std::cend(compatible_licenses)));
+		STATIC_REQUIRE(std::is_sorted(compatible_licenses.cbegin(), compatible_licenses.cend(), is_case_insensitive_less{})
+		);
 
 		STATIC_REQUIRE(std::all_of(
-				std::cbegin(dependencies), std::cend(dependencies),
-				[&compatible_licenses](const dependency_t& dependency) -> bool
+				dependencies.cbegin(), dependencies.cend(), [&compatible_licenses](const dependency_t& dependency) -> bool
 				{ return is_in_sorted_array(compatible_licenses, dependency.license_name); }
 		));
 	}
