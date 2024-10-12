@@ -36,11 +36,17 @@ jobs:
             compiler: gcc
           - os: ubuntu-24.04
             compiler: msvc
-
+          - os: ubuntu-24.04
+            compiler: clang
+            build_type: debug
+          - os: ubuntu-24.04
+            compiler: gcc
+            build_type: release
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup MSVC
+        if: matrix.compiler == 'msvc'
         uses: ilammy/msvc-dev-cmd@v1
 
       - name: Setup vcpkg
@@ -59,3 +65,6 @@ jobs:
 
       - name: Build project
         run: cmake --build --preset ci-build-${{ matrix.cmake_os }}-${{ matrix.build_type }}-${{ matrix.compiler }}
+
+      - name: Run tests
+        run: ctest --preset ci-test-${{ matrix.cmake_os }}-${{ matrix.build_type }}-${{ matrix.compiler }} --output-on-failure

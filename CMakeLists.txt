@@ -41,4 +41,6 @@ add_subdirectory(imogrify)
 
 if (IMOGRIFY_BUILD_UNIT_TESTS)
 	add_subdirectory(tests)
+	enable_testing()
+	add_test(NAME imogrify_unit_tests COMMAND $<TARGET_FILE:imogrify_unit_tests>)
 endif ()

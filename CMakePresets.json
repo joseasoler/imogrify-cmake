@@ -153,12 +153,44 @@
 		{
 			"name": "ci-build-windows-debug-msvc",
 			"configurePreset": "ci-cfg-windows-debug-msvc",
-			"displayName": "Linux Debug GCC"
+			"displayName": "Windows Debug MSVC"
 		},
 		{
 			"name": "ci-build-windows-release-msvc",
 			"configurePreset": "ci-cfg-windows-release-msvc",
+			"displayName": "Windows Release MSVC"
+		}
+	],
+	"testPresets": [
+		{
+			"name": "ci-test-linux-debug-gcc",
+			"configurePreset": "ci-cfg-linux-debug-gcc",
+			"displayName": "Linux Debug GCC"
+		},
+		{
+			"name": "ci-test-linux-release-gcc",
+			"configurePreset": "ci-cfg-linux-release-gcc",
 			"displayName": "Linux Release GCC"
+		},
+		{
+			"name": "ci-test-linux-debug-clang",
+			"configurePreset": "ci-cfg-linux-debug-clang",
+			"displayName": "Linux Debug Clang"
+		},
+		{
+			"name": "ci-test-linux-release-clang",
+			"configurePreset": "ci-cfg-linux-release-clang",
+			"displayName": "Linux Release Clang"
+		},
+		{
+			"name": "ci-test-windows-debug-msvc",
+			"configurePreset": "ci-cfg-windows-debug-msvc",
+			"displayName": "Windows Debug MSVC"
+		},
+		{
+			"name": "ci-test-windows-release-msvc",
+			"configurePreset": "ci-cfg-windows-release-msvc",
+			"displayName": "Windows Release MSVC"
 		}
 	]
 }
