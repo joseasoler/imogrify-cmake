@@ -19,11 +19,11 @@ jobs:
       fail-fast: false
 
       matrix:
-        os: [ ubuntu-latest, windows-latest ]
+        os: [ ubuntu-24.04, windows-latest ]
         build_type: [ debug, release ]
         compiler: [ clang, gcc, msvc ]
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             cmake_os: linux
           - os: windows-latest
             cmake_os: windows
@@ -34,7 +34,7 @@ jobs:
             compiler: clang
           - os: windows-latest
             compiler: gcc
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             compiler: msvc
 
     steps:
