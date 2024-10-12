@@ -7,6 +7,8 @@
 
 #include <boost/filesystem/path.hpp>
 
+#include <algorithm>
+
 #if IMOGRIFY_OS_WINDOWS
 #include <cwctype>
 #else
@@ -39,7 +41,7 @@ bool insensitive_equals(const imfy::fs::path_view lhs, const imfy::fs::path_view
 		return std::towlower(lhsc) == rhsc;
 #else
 		return std::tolower(lhsc) == rhsc;
-#endif // IMOGRIFY_OS_WINDOWSs
+#endif // IMOGRIFY_OS_WINDOWS
 	};
 	return lhs.size() == rhs.size() && std::equal(lhs.cbegin(), lhs.cend(), rhs.cbegin(), char_insensitive_equals);
 }

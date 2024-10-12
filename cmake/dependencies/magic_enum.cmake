@@ -4,7 +4,7 @@
 
 include_guard(GLOBAL)
 
-find_package(magic_enum)
+find_package(magic_enum REQUIRED)
 
 add_dependency_metadata(
 	NAME "Magic Enum"

@@ -10,6 +10,8 @@
 #include <magic_enum.hpp>
 
 #include <array>
+#include <cstddef>
+#include <string_view>
 
 namespace
 {
@@ -21,13 +23,13 @@ constexpr std::array image_format_extensions{PATH_LITERAL("/"), PATH_LITERAL("pn
 namespace imfy
 {
 
-[[nodiscard]] image_format image_format_from_input(std::string_view input)
+[[nodiscard]] image_format image_format_from_input(const std::string_view input)
 {
 	auto parsed_format = magic_enum::enum_cast<image_format>(input, magic_enum::case_insensitive);
 	return parsed_format.has_value() ? parsed_format.value() : image_format::none;
 }
 
-bool file_matches_image_format(image_format type, fs::path_view file_path)
+bool file_matches_image_format(const image_format type, const fs::path_view file_path)
 {
 	return fs::has_extension(image_format_extensions[static_cast<std::size_t>(type)], file_path);
 }
