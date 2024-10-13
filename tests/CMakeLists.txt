@@ -13,7 +13,10 @@ add_executable(imogrify_unit_tests
 )
 
 target_link_libraries(imogrify_unit_tests PRIVATE
+	Boost::filesystem
+	Boost::nowide
 	Catch2::Catch2
+	PNG::PNG
 	imogrify_core
 	imogrify_arguments
 )

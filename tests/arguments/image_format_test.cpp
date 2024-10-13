@@ -7,6 +7,8 @@
 
 #include <imfy/path.hpp>
 
+#include <png.h>
+
 #include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("Get image format from input", "[arguments][image_format]")
@@ -34,7 +36,12 @@ TEST_CASE("PNG Image format extension tests", "[arguments][image_format]")
 	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::png, PATH_LITERAL("file")));
 }
 
-TEST_CASE("Extra format information tests", "[arguments][image_format]")
+TEST_CASE("PNG format information tests", "[arguments][image_format]")
 {
+	STATIC_REQUIRE(static_cast<int>(imfy::png_color_type::gray) == PNG_COLOR_TYPE_GRAY);
+	STATIC_REQUIRE(static_cast<int>(imfy::png_color_type::rgb) == PNG_COLOR_TYPE_RGB);
+	STATIC_REQUIRE(static_cast<int>(imfy::png_color_type::palette) == PNG_COLOR_TYPE_PALETTE);
+	STATIC_REQUIRE(static_cast<int>(imfy::png_color_type::ga) == PNG_COLOR_TYPE_GRAY_ALPHA);
+	STATIC_REQUIRE(static_cast<int>(imfy::png_color_type::rgba) == PNG_COLOR_TYPE_RGB_ALPHA);
 	STATIC_REQUIRE(sizeof(imfy::png_information) == 2U);
 }

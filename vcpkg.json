@@ -5,6 +5,7 @@
 		"boost-filesystem",
 		"boost-nowide",
 		"fmt",
+		"libpng",
 		"magic-enum"
 	],
 	"features": {

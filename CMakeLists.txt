@@ -35,6 +35,7 @@ include(cmake/compiler_warnings.cmake)
 include(cmake/dependencies/boost.cmake)
 include(cmake/dependencies/catch2.cmake)
 include(cmake/dependencies/fmt.cmake)
+include(cmake/dependencies/libpng.cmake)
 include(cmake/dependencies/magic_enum.cmake)
 
 add_subdirectory(imogrify)
