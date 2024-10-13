@@ -33,3 +33,8 @@ TEST_CASE("PNG Image format extension tests", "[arguments][image_format]")
 	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::png, PATH_LITERAL("file.apng")));
 	REQUIRE(!imfy::file_matches_image_format(imfy::image_format::png, PATH_LITERAL("file")));
 }
+
+TEST_CASE("Extra format information tests", "[arguments][image_format]")
+{
+	STATIC_REQUIRE(sizeof(imfy::png_information) == 2U);
+}

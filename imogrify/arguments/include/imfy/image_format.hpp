@@ -13,13 +13,10 @@
 namespace imfy
 {
 
-/** Underlying primitive type used by every *_image_format_type enum and the image_file_type enum. */
-using image_format_t = std::uint8_t;
-
 /** @brief Image formats supported by imogrify.
  * See *_image_format_type enums for specific types for each image
  */
-enum class image_format : image_format_t
+enum class image_format : std::uint8_t
 {
 	/** Only valid for certain options such as alpha image output. */
 	none = 0U,
@@ -33,28 +30,29 @@ enum class image_format : image_format_t
 /** Checks if a file has an extension belonging to the chosen image format. */
 [[nodiscard]] bool file_matches_image_format(image_format type, fs::path_view file_path);
 
-enum class png_image_format : image_format_t
+/** See http://www.libpng.org/pub/png/spec/1.2/PNG-Chunks.html#C.IHDR for details. */
+enum class png_color_type : std::uint8_t
 {
-	/* Invalid PNG image format. */
-	none,
-	/** Palette with 8 bits per channel. */
-	palette_8,
-	/** Grayscale with 8 bits per channel. */
-	gray_8,
-	/** Grayscale with 16 bits per channel. */
-	gray_16,
-	/** Grayscale and alpha with 8 bits per channel. */
-	ga_8,
-	/** Grayscale and alpha with 16 bits per channel. */
-	ga_16,
-	/** RGB with 8 bits per channel. */
-	rgb_8,
-	/** RGB with 16 bits per channel. */
-	rgb_16,
-	/** RGBA with 8 bits per channel. */
-	rgba_8,
-	/** RGBA with 16 bits per channel. */
-	rgba_16,
+	gray = 0U,
+	rgb = 2U,
+	palette = 3U,
+	ga = 4U,
+	rgba = 6U,
+};
+
+/** Imogrify does not offer support for bit depths smaller than 8. 16 is not supported for palette color types.
+ * See http://www.libpng.org/pub/png/spec/1.2/PNG-Chunks.html#C.IHDR for details.
+ */
+enum class png_bit_depth : std::uint8_t
+{
+	eight = 8U,
+	sixteen = 16U,
+};
+
+struct png_information final
+{
+	png_color_type color_type;
+	png_bit_depth bit_depth;
 };
 
 } // namespace imfy
