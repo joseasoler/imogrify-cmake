@@ -3,6 +3,7 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 add_library(imogrify_arguments STATIC
+	include/imfy/arguments.hpp
 	include/imfy/image_format.hpp
 	image_format.cpp
 )

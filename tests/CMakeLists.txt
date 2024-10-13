@@ -9,6 +9,7 @@ add_executable(imogrify_unit_tests
 	core/build_test.cpp
 	core/dependencies_test.cpp
 	core/path_test.cpp
+	arguments/arguments_test.cpp
 	arguments/image_format_test.cpp
 )
 
