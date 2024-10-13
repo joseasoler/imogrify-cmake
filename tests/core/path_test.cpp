@@ -5,7 +5,19 @@
 
 #include "imfy/path.hpp"
 
+#include <boost/filesystem/path.hpp>
+
+#include <string>
+#include <type_traits>
+
 #include <catch2/catch_test_macros.hpp>
+
+TEST_CASE("Path types", "[core][path]")
+{
+	STATIC_REQUIRE(std::is_same_v<boost::filesystem::path::value_type, imfy::fs::path_char_t>);
+	STATIC_REQUIRE(std::is_same_v<boost::filesystem::path::string_type, std::basic_string<imfy::fs::path_char_t>>);
+	STATIC_REQUIRE(std::is_convertible_v<std::basic_string<imfy::fs::path_char_t>, imfy::fs::path_view>);
+}
 
 TEST_CASE("Path utility functions tests", "[core][path]")
 {
