@@ -14,6 +14,19 @@
 			"dependencies": [
 				"catch2"
 			]
+		},
+		"benchmark-imogrify": {
+			"description": "Build imogrify benchmarks",
+			"dependencies": [
+				"nanobench"
+			]
+		},
+		"benchmark-dependencies": {
+			"description": "Build dependency benchmarks",
+			"dependencies": [
+				"libspng",
+				"lodepng"
+			]
 		}
 	}
 }

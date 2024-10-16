@@ -125,6 +125,10 @@ IncludeCategories:
     Priority: 300
   - Regex: '^<magic_enum.*'
     Priority: 300
+  - Regex: '^<nanobench.*'
+    Priority: 300
+  - Regex: '^<png.*'
+    Priority: 300
   - Regex: '^<catch2.*'
     Priority: 1000
   - Regex: '^<.*'

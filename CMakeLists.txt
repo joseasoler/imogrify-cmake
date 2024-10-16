@@ -33,12 +33,17 @@ include(cmake/clang_tidy.cmake)
 include(cmake/compiler_warnings.cmake)
 
 include(cmake/dependencies/boost.cmake)
-include(cmake/dependencies/catch2.cmake)
 include(cmake/dependencies/fmt.cmake)
 include(cmake/dependencies/libpng.cmake)
 include(cmake/dependencies/magic_enum.cmake)
 
+add_subdirectory(thirdparty)
+
 add_subdirectory(imogrify)
+
+if (IMOGRIFY_BUILD_IMOGRIFY_BENCHMARKS OR IMOGRIFY_BUILD_DEPENDENCY_BENCHMARKS)
+	add_subdirectory(benchmarks)
+endif ()
 
 if (IMOGRIFY_BUILD_UNIT_TESTS)
 	add_subdirectory(tests)

@@ -12,11 +12,21 @@ imogrify encourages community involvement and contributions. Check the [CONTRIBU
 
 imogrify is licensed under the Mozilla Public License, v. 2.0. See the [LICENSE](LICENSE) file for details. Check the [MPL 2.0 FAQ](https://www.mozilla.org/en-US/MPL/2.0/FAQ/) to learn more.
 
+The repository includes third party dependencies as source code in the thirdparty subfolder. Each one of them is under their own license, which is included in their respective folder. 
+
 ## Building
 
 Building imogrify requires [CMake](https://cmake.org/) and a [compiler with C++20 support](https://en.cppreference.com/w/cpp/compiler_support#cpp20).
 
+### CMake presets
+
+imogrify includes a set of CMake presets intended for use in CI, which can also be used for development. These presets use [vcpkg](https://github.com/microsoft/vcpkg) to retrieve and build the dependencies.
+
+To use these presets locally, you will need to [install vcpkg](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started) and set the environment variable `VCPKG_ROOT` to its path. It is recommended to install vcpkg in a short path to avoid building issues with some dependencies. Keep in mind that [vcpkg collects telemetry data by default](https://learn.microsoft.com/en-us/vcpkg/about/privacy). It is possible to disable it by setting the `VCPKG_DISABLE_METRICS` environment variable.
+
 ### Dependencies
+
+imogrify expects to have the following dependencies available to be retrieved through `find_package`.
 
 * **[Boost.Filesystem](https://www.boost.org/doc/libs/master/libs/filesystem/doc/index.htm)**: Filesystem operations with UTF-8 encoding. See [this link](https://www.boost.org/doc/libs/1_86_0/libs/nowide/doc/html/index.html#using_integration) for details.
 
@@ -28,18 +38,22 @@ Building imogrify requires [CMake](https://cmake.org/) and a [compiler with C++2
 
 * **[Magic Enum](https://github.com/Neargye/magic_enum)**: Provides static reflection for enums.
 
+* **[nanobench](https://nanobench.ankerl.com/)**: A platform independent microbenchmarking library for C++. Only required if `IMOGRIFY_BUILD_DEPENDENCY_BENCHMARKS` or `IMOGRIFY_BUILD_IMOGRIFY_BENCHMARKS` are enabled. 
+
+The following dependencies are included as source code in the thirdparty folder of the imogrify repository.
+
+* **[wuffs](https://nanobench.ankerl.com/)**: A library for Wrangling Untrusted File Formats Safely.
+
+Compiling with the `IMOGRIFY_BUILD_DEPENDENCY_BENCHMARKS` CMake option enabled requires additional dependencies.
+
 ### CMake options
 
 * `CMAKE_COMPILE_WARNING_AS_ERROR`: When this option is enabled, compilers will treat warnings as errors. If `IMOGRIFY_CLANG_TIDY` is enabled, [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) will also treat its warnings as errors.
+* `IMOGRIFY_BUILD_DEPENDENCY_BENCHMARKS`: Compile benchmarks comparing potential dependencies for imogrify. Requires the [nanobench](https://nanobench.ankerl.com/) library along with additional dependencies. Off by default.
+* `IMOGRIFY_BUILD_IMOGRIFY_BENCHMARKS`: Compile microbenchmarks for some parts of the imogrify code. Requires the [nanobench](https://nanobench.ankerl.com/) library. Off by default.
 * `IMOGRIFY_BUILD_UNIT_TESTS`: Builds unit tests. Requires the [Catch2](https://github.com/catchorg/Catch2) library. Off by default.
 * `IMOGRIFY_CLANG_ALL_WARNINGS`: This option is only available when the [clang](https://clang.llvm.org/) compiler is in use. This option enables almost every warning from this compiler, except for a few that cause issues with imogrify. This may trigger unexpected positives when using newer clang versions. Off by default.
 * `IMOGRIFY_CLANG_TIDY`: If [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) is available, it will be used to analyze the project. Off by default.
-
-### CMake presets
-
-imogrify includes a set of CMake presets intended for use in CI. These presets use [vcpkg](https://github.com/microsoft/vcpkg) to retrieve and build the dependencies.
-
-To use these presets locally, you will need to [install vcpkg](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started) and set the environment variable `VCPKG_ROOT` to its path. It is recommended to install vcpkg in a short path to avoid building issues with some dependencies. Keep in mind that [vcpkg collects telemetry data by default](https://learn.microsoft.com/en-us/vcpkg/about/privacy). It is possible to disable it by setting the `VCPKG_DISABLE_METRICS` environment variable.
 
 ## Acknowledgements
 
