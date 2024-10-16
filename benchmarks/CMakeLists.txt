@@ -4,6 +4,8 @@
 
 find_package(nanobench CONFIG)
 
+add_subdirectory(benchmark_utils)
+
 if (IMOGRIFY_BUILD_DEPENDENCY_BENCHMARKS)
 	add_subdirectory(dependency_benchmarks)
 endif ()

@@ -6,4 +6,4 @@ Code formatting is handled by the rules set in the .clang-format and .clang-tidy
 
 * Header files must use the hpp extension.
 
-* The project uses a single tab for indentation instead of spaces (see https://www.reddit.com/r/javascript/comments/c8drjo/nobody_talks_about_the_real_reason_to_use_tabs/).
+* The project uses a single tab for indentation instead of spaces (see https://www.reddit.com/r/javascript/comments/c8drjo/nobody_talks_about_the_real_reason_to_use_tabs).

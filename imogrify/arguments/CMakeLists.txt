@@ -10,12 +10,12 @@ add_library(imogrify_arguments STATIC
 
 target_include_directories(imogrify_arguments PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>/include
-	$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>/include
 )
 
 target_compile_options(imogrify_arguments PRIVATE ${IMOGRIFY_CPP_WARNING_FLAGS})
 
 target_link_libraries(imogrify_arguments PRIVATE
 	magic_enum::magic_enum
+	PUBLIC
 	imogrify_core
 )
