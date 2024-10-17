@@ -12,7 +12,7 @@
 namespace imfy::bench
 {
 
-std::size_t encode_lodepng(
+[[nodiscard]] std::size_t encode_lodepng(
 		std::uint32_t width, std::uint32_t height, std::span<const std::uint8_t> input_image, std::uint8_t color_type,
 		std::uint8_t bit_depth
 );
