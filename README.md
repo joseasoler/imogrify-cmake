@@ -52,8 +52,6 @@ Compiling with the `IMOGRIFY_BUILD_DEPENDENCY_BENCHMARKS` CMake option enabled r
 
 * **[lodepng](https://lodev.org/lodepng)**: LodePNG is a PNG image decoder and encoder, all in one, no dependency or linkage to zlib or libpng required.
 
-* **[tabulate](https://github.com/p-ranav/tabulate)**: Table Maker for Modern C++.
-
 ### CMake options
 
 * `CMAKE_COMPILE_WARNING_AS_ERROR`: When this option is enabled, compilers will treat warnings as errors. If `IMOGRIFY_CLANG_TIDY` is enabled, [clang-tidy](https://clang.llvm.org/extra/clang-tidy) will also treat its warnings as errors.

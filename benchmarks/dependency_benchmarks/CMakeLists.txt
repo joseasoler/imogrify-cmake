@@ -18,7 +18,9 @@ target_include_directories(dependency_benchmark_png_encode PRIVATE
 target_compile_options(dependency_benchmark_png_encode PRIVATE ${IMOGRIFY_CPP_WARNING_FLAGS})
 
 target_link_libraries(dependency_benchmark_png_encode PRIVATE
+	fmt::fmt
 	lodepng
+	magic_enum::magic_enum
 	nanobench::nanobench
 	PNG::PNG
 	$<IF:$<TARGET_EXISTS:spng::spng_static>,spng::spng_static,spng::spng>

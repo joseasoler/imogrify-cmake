@@ -25,8 +25,7 @@
 			"description": "Build dependency benchmarks",
 			"dependencies": [
 				"libspng",
-				"lodepng",
-				"tabulate"
+				"lodepng"
 			]
 		}
 	}

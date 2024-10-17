@@ -131,8 +131,6 @@ IncludeCategories:
     Priority: 300
   - Regex: '^<spng.*'
     Priority: 300
-  - Regex: '^<tabulate.*'
-    Priority: 300
   - Regex: '^<zlib.*'
     Priority: 300
   - Regex: '^<catch2.*'

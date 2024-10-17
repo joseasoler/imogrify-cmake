@@ -1,4 +1,3 @@
-find_package(tabulate CONFIG REQUIRED)
 
 add_library(benchmark_utils INTERFACE
 	include/imfy/bench/raw_image_generator.hpp
